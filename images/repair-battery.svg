@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Troca de bateria</title>
+  <desc id="desc">Ilustracao de bateria sendo revisada</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#202e36"/><stop offset="1" stop-color="#526b72"/></linearGradient></defs>
+  <rect width="640" height="480" rx="20" fill="url(#bg)"/>
+  <rect x="220" y="90" width="200" height="300" rx="22" fill="#e9eff0" stroke="#c6a568" stroke-width="6"/>
+  <rect x="272" y="67" width="96" height="24" rx="7" fill="#c6a568"/>
+  <rect x="250" y="122" width="140" height="220" rx="12" fill="#15232a"/>
+  <path d="m327 142-46 92h37l-12 78 52-106h-37z" fill="#e1c47e"/>
+  <path d="M195 400h250" stroke="#e9eff0" stroke-width="3" opacity=".4"/>
+  <text x="34" y="430" fill="#f5f7f8" font-family="Arial, sans-serif" font-size="17" letter-spacing="3">BATERIA E AUTONOMIA</text>
+</svg>

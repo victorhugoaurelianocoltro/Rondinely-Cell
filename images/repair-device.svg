@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Aparelho para avaliacao</title>
+  <desc id="desc">Ilustracao de celular quebrado em avaliacao</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#eff4f5"/><stop offset="1" stop-color="#c7d8dd"/></linearGradient></defs>
+  <rect width="640" height="480" rx="20" fill="url(#bg)"/>
+  <rect x="177" y="120" width="286" height="210" rx="25" fill="#1a252c" stroke="#c6a568" stroke-width="7" transform="rotate(-8 320 225)"/>
+  <rect x="197" y="140" width="246" height="160" rx="14" fill="#304b57" transform="rotate(-8 320 225)"/>
+  <path d="m249 278 38-74 30 42 43-85 51 92" fill="none" stroke="#e0c486" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="476" cy="114" r="39" fill="#c6a568"/><path d="m458 114 13 13 23-28" fill="none" stroke="#18232d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="34" y="430" fill="#18232d" font-family="Arial, sans-serif" font-size="17" letter-spacing="3">APARELHO AVALIADO</text>
+</svg>
