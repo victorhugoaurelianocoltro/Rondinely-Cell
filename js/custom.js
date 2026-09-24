@@ -235,6 +235,69 @@
     draw();
   }
 
+  function setupDiagnosticFlow() {
+    var brandSelect = document.getElementById('deviceBrand');
+    var modelSelect = document.getElementById('deviceModel');
+    var issueSelect = document.getElementById('deviceIssue');
+    var title = document.getElementById('diagnosticTitle');
+    var text = document.getElementById('diagnosticText');
+    var tagOne = document.getElementById('tagOne');
+    var tagTwo = document.getElementById('tagTwo');
+    var tagThree = document.getElementById('tagThree');
+    var meta = document.getElementById('resultMeta');
+    var button = document.getElementById('quoteDiagnosisBtn');
+    if (!brandSelect || !modelSelect || !issueSelect || !title || !text || !tagOne || !tagTwo || !tagThree || !meta || !button) return;
+
+    var profiles = {
+      iphone: ['iPhone 12', 'iPhone 13', 'iPhone 14', 'iPhone 15', 'iPhone SE'],
+      samsung: ['Galaxy S23', 'Galaxy S24', 'Galaxy A54', 'Galaxy A34', 'Galaxy Note'],
+      motorola: ['Moto G8', 'Moto G100', 'Moto Edge', 'Moto One Vision'],
+      xiaomi: ['Redmi Note 11', 'Redmi Note 12', 'POCO F5', 'Xiaomi 13'],
+      outros: ['Outros modelos', 'Android genérico', 'iPhone não listado', 'Samsung não listado']
+    };
+
+    var recommendations = {
+      tela: { title: 'Troca de tela', text: 'A falha costuma aparecer por impacto, vidro rachado ou perda de sensibilidade ao toque. O diagnóstico técnico é essencial para garantir encaixe perfeito e evitar problemas recorrentes.', tags: ['Tela', 'Precisão', 'Touch'], meta: 'Tempo de resposta: 1 a 2 dias úteis' },
+      bateria: { title: 'Troca de bateria', text: 'Se o aparelho descarrega rápido, esfria, ou desliga sozinho, a melhor solução é a troca com análise de desgaste e desempenho do componente.', tags: ['Bateria', 'Autonomia', 'Segurança'], meta: 'Tempo de resposta: 24 a 48 horas' },
+      carga: { title: 'Conector de carga', text: 'Falhas de encaixe e carregamento podem indicar desgaste do conector ou problemas internos de alimentação. A revisão aponta a causa antes da substituição.', tags: ['Carga', 'Conector', 'Estabilidade'], meta: 'Tempo de resposta: 2 a 3 dias úteis' },
+      camera: { title: 'Reparo de câmera', text: 'Problemas de foco, lente turva ou imagem distorcida precisam de diagnóstico preciso para confirmar se a solução é limpeza, lente ou módulo completo.', tags: ['Camera', 'Foco', 'Lente'], meta: 'Tempo de resposta: 2 a 4 dias úteis' },
+      audio: { title: 'Microfone / alto-falante', text: 'Som baixo, falhas de gravação ou ausência de áudio em chamadas são sinais comuns de defeito no módulo áudio. O diagnóstico evita troca sem necessidade.', tags: ['Áudio', 'Clareza', 'Chamada'], meta: 'Tempo de resposta: 1 a 3 dias úteis' },
+      diagnostico: { title: 'Diagnóstico e manutenção', text: 'Quando o sintoma não é único, a análise técnica precisa verificar cada ponto do aparelho para indicar a correção correta e evitar gasto desnecessário.', tags: ['Diagnóstico', 'Manutenção', 'Teste'], meta: 'Tempo de resposta: 24 horas' }
+    };
+
+    function populateModels() {
+      var currentBrand = brandSelect.value;
+      modelSelect.innerHTML = profiles[currentBrand].map(function (model) {
+        return '<option value="' + model + '">' + model + '</option>';
+      }).join('');
+      refreshSummary();
+    }
+
+    function refreshSummary() {
+      var currentIssue = issueSelect.value;
+      var current = recommendations[currentIssue];
+      if (!current) return;
+      title.textContent = current.title;
+      text.textContent = current.text;
+      tagOne.textContent = current.tags[0];
+      tagTwo.textContent = current.tags[1];
+      tagThree.textContent = current.tags[2];
+      meta.textContent = current.meta;
+    }
+
+    brandSelect.addEventListener('change', populateModels);
+    issueSelect.addEventListener('change', refreshSummary);
+    populateModels();
+
+    button.addEventListener('click', function () {
+      var brand = brandSelect.options[brandSelect.selectedIndex].text;
+      var model = modelSelect.value;
+      var issue = issueSelect.options[issueSelect.selectedIndex].text;
+      var textMessage = 'Olá, Rondineli Cell. Gostaria de solicitar um orçamento para ' + brand + ' ' + model + '. Problema: ' + issue + '. Por favor, me retornem com a melhor solução e o valor.';
+      window.open('https://api.whatsapp.com/send?phone=5511947482819&text=' + encodeURIComponent(textMessage), '_blank', 'noopener');
+    });
+  }
+
   function setupQuoteForm() {
     var form = document.getElementById('quoteForm');
     if (!form) return;
@@ -256,6 +319,7 @@
     setupReveal();
     setupTilt();
     setupParticles();
+    setupDiagnosticFlow();
     setupQuoteForm();
   }
 
